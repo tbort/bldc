@@ -150,6 +150,8 @@ package_dict["SOLO"] = [['solo', default_name],
 package_dict["FSESC_75_200_ALU"] = [['fsesc_75_200_alu', default_name],
                     ['fsesc_75_200_alu_no_limits', no_limits_name]]
 
+# package_dict["RYSE"] = [['']]
+
 # This is the firmware stub string
 res_firmwares_string = '        <file>TARGET_DESTINATION_DIRECTORY/TARGET_DESTINATION_FILENAME</file>\n'
 
