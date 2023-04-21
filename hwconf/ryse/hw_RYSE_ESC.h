@@ -98,10 +98,10 @@
 
 // Component parameters (can be overridden)
 #ifndef V_REG
-#define V_REG					3.34
+#define V_REG					3.416
 #endif
 #ifndef VIN_R1
-#define VIN_R1					174000.0
+#define VIN_R1					187000.0
 #endif
 #ifndef VIN_R2
 #define VIN_R2					3300.0
