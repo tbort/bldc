@@ -28,7 +28,7 @@
 
 // Macros
 #define LED_GREEN_GPIO			GPIOB
-#define LED_GREEN_PIN			4
+#define LED_GREEN_PIN			3
 #define LED_RED_GPIO			GPIOB
 #define LED_RED_PIN			7
 
@@ -154,14 +154,14 @@
 #define HW_UART_P_RX_PIN		11
 
 // ICU Peripheral for servo decoding
-#define HW_USE_SERVO_TIM4
-#define HW_ICU_TIMER			TIM4
-#define HW_ICU_TIM_CLK_EN()		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE)
-#define HW_ICU_DEV			ICUD4
+
+#define HW_ICU_TIMER			TIM3
+#define HW_ICU_TIM_CLK_EN()		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE)
+#define HW_ICU_DEV			ICUD3
 #define HW_ICU_CHANNEL			ICU_CHANNEL_1
-#define HW_ICU_GPIO_AF			GPIO_AF_TIM4
+#define HW_ICU_GPIO_AF			GPIO_AF_TIM3
 #define HW_ICU_GPIO			GPIOB
-#define HW_ICU_PIN			6
+#define HW_ICU_PIN			4
 
 // I2C Peripheral
 #define HW_I2C_DEV			I2CD2
@@ -178,16 +178,16 @@
 #define HW_HALL_ENC_PIN2		7
 #define HW_HALL_ENC_GPIO3		GPIOC
 #define HW_HALL_ENC_PIN3		8
-#define HW_ENC_TIM			TIM3
-#define HW_ENC_TIM_AF			GPIO_AF_TIM3
-#define HW_ENC_TIM_CLK_EN()		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE)
+#define HW_ENC_TIM			TIM4
+#define HW_ENC_TIM_AF			GPIO_AF_TIM4
+#define HW_ENC_TIM_CLK_EN()		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE)
 #define HW_ENC_EXTI_PORTSRC		EXTI_PortSourceGPIOC
 #define HW_ENC_EXTI_PINSRC		EXTI_PinSource8
 #define HW_ENC_EXTI_CH			EXTI9_5_IRQn
 #define HW_ENC_EXTI_LINE		EXTI_Line8
 #define HW_ENC_EXTI_ISR_VEC		EXTI9_5_IRQHandler
-#define HW_ENC_TIM_ISR_CH		TIM3_IRQn
-#define HW_ENC_TIM_ISR_VEC		TIM3_IRQHandler
+#define HW_ENC_TIM_ISR_CH		TIM4_IRQn
+#define HW_ENC_TIM_ISR_VEC		TIM4_IRQHandler
 
 // SPI pins
 #define HW_SPI_DEV			SPID1
