@@ -27,6 +27,7 @@
 void servodec_init(void (*d_func)(void));
 void servodec_stop(void);
 void servodec_set_pulse_options(float start, float end, bool median_filter);
+uint16_t servodec_get_servo_raw(int servo_num);
 float servodec_get_servo(int servo_num);
 uint32_t servodec_get_time_since_update(void);
 float servodec_get_last_pulse_len(int servo_num);

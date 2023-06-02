@@ -976,6 +976,15 @@ void lispif_stop_lib(void) {
 	lib_running_threads_cnt = 0;
 }
 
+uint16_t lispif_get_ppm_raw(void) {
+	if (!servodec_is_running()) {
+		servo_simple_stop();
+		servodec_init(0);
+	}
+
+	return servodec_get_servo_raw(0);
+}
+
 float lispif_get_ppm(void) {
 	if (!servodec_is_running()) {
 		servo_simple_stop();

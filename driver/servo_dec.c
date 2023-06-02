@@ -32,6 +32,7 @@
 
 // Private variables
 static volatile systime_t last_update_time = 0;
+static volatile uint16_t servo_pos_raw[SERVO_NUM];
 static volatile float servo_pos[SERVO_NUM];
 static volatile float pulse_start = 1.0;
 static volatile float pulse_end = 2.0;
@@ -43,10 +44,14 @@ static volatile bool is_running = false;
 static void(*done_func)(void) = 0;
 
 static void icuwidthcb(ICUDriver *icup) {
+	// save raw value
+	servo_pos_raw[0] = icuGetWidthX(icup);
+
 	float len_received = ((float)icuGetWidthX(icup) / ((float)TIMER_FREQ / 1000.0));
 #ifndef HW_VALIDATE_SERVO_INPUT
 	last_len_received[0] = len_received;
 #endif
+
 	float len = len_received - pulse_start;
 	const float len_set = (pulse_end - pulse_start);
 
@@ -116,6 +121,7 @@ void servodec_init(void (*d_func)(void)) {
 	icuEnableNotifications(&HW_ICU_DEV);
 
 	for (int i = 0;i < SERVO_NUM;i++) {
+		servo_pos_raw[i] = 0;
 		servo_pos[i] = 0.0;
 		last_len_received[i] = 0.0;
 	}
@@ -156,6 +162,23 @@ void servodec_set_pulse_options(float start, float end, bool median_filter) {
 	pulse_start = start;
 	pulse_end = end;
 	use_median_filter = median_filter;
+}
+
+/**
+ * Get a raw servo value.
+ *
+ * @param servo_num
+ * The servo index. If it is out of range, 0.0 will be returned.
+ *
+ * @return
+ * The servo value in the range [0 2500].
+ */
+uint16_t servodec_get_servo_raw(int servo_num) {
+	if (servo_num < SERVO_NUM) {
+		return servo_pos_raw[servo_num];
+	} else {
+		return 0;
+	}
 }
 
 /**

@@ -488,6 +488,11 @@ static lbm_value ext_reset_timeout(lbm_value *args, lbm_uint argn) {
 	return ENC_SYM_TRUE;
 }
 
+static lbm_value ext_get_ppm_raw(lbm_value *args, lbm_uint argn) {
+	(void)args; (void)argn;
+	return lbm_enc_u(lispif_get_ppm_raw());
+}
+
 static lbm_value ext_get_ppm(lbm_value *args, lbm_uint argn) {
 	(void)args; (void)argn;
 	return lbm_enc_float(lispif_get_ppm());
@@ -3812,6 +3817,7 @@ void lispif_load_vesc_extensions(void) {
 	lbm_add_extension("timeout-reset", ext_reset_timeout);
 	lbm_add_extension("get-ppm", ext_get_ppm);
 	lbm_add_extension("get-ppm-age", ext_get_ppm_age);
+	lbm_add_extension("get-ppm-raw", ext_get_ppm_raw);
 	lbm_add_extension("get-encoder", ext_get_encoder);
 	lbm_add_extension("get-encoder-error-rate", ext_get_encoder_error_rate);
 	lbm_add_extension("set-servo", ext_set_servo);
