@@ -20,6 +20,9 @@
 #ifndef HW_RYSE_ESC_H_
 #define HW_RYSE_ESC_H_
 
+#include "mcconf_RYSE_ESC.h"
+#include "appconf_RYSE_ESC.h"
+
 #define HW_NAME					"RYSE_ESC"
 
 // HW properties
